@@ -12,11 +12,27 @@ namespace Maze
 {
     public partial class Form1 : Form
     {
+        #region http://stackoverflow.com/questions/6638720/custom-cursor-in-c-sharp-winforms
+        //(in a class)
+        public static Cursor ActuallyLoadCursor(String path)
+        {
+            return new Cursor(LoadCursorFromFile(path));
+        }
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern IntPtr LoadCursorFromFile(string fileName);
+        #endregion
+
         System.Media.SoundPlayer startSoundPlayer = new System.Media.SoundPlayer(@"C:\Windows\Media\chord.wav");
         System.Media.SoundPlayer finishSoundPlayer = new System.Media.SoundPlayer(@"C:\Windows\Media\tada.wav");
         public Form1()
         {
             InitializeComponent();
+
+            //var cursorFileName = @"C:\Users\littl\Downloads\sword.cur";
+            var cursorFileName = @"sword.cur";
+            var myCursor = new Cursor(cursorFileName);
+            this.Cursor = myCursor;
+
             MoveToStart();
         }
 
