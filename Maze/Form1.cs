@@ -31,7 +31,7 @@ namespace Maze
         private void finishLabel_MouseEnter(object sender, EventArgs e)
         {
             finishSoundPlayer.Play();
-            MessageBox.Show("Congratulations! you finished the maze");
+            MessageBox.Show("Congratulations! You finished the maze!");
             Close();
         }
 
